@@ -50,18 +50,18 @@ const CartItem = ({ onContinueShopping }) => {
                 <p>{item.description}</p>
                 <p>Price: {item.cost}</p>
                 <div className="cart-item-quantity">
-                  <button onClick={() => handleDecrement(item)}>-</button>
+                <button className="cart-item-button cart-item-button-dec" onClick={() => handleDecrement(item)}>-</button>
                   <span>{item.quantity}</span>
-                  <button onClick={() => handleIncrement(item)}>+</button>
+                  <button className="cart-item-button cart-item-button-inc" onClick={() => handleIncrement(item)}>+</button>
                 </div>
                 <p>Subtotal: ${calculateSubtotal(item).toFixed(2)}</p>
-                <button onClick={() => handleRemove(item)}>Remove</button>
+                <button className="cart-item-delete" onClick={() => handleRemove(item)}>Delete</button>
               </div>
             </div>
           ))}
           <h3>Total: ${calculateTotalAmount().toFixed(2)}</h3>
-          <button onClick={onContinueShopping}>Continue Shopping</button>
-          <button onClick={handleCheckoutShopping}>Checkout</button>
+          <button className="get-started-button" onClick={(e) => handleContinueShopping(e)}>Continue Shopping</button>
+          <button className="get-started-button1">Checkout</button>
         </div>
       )}
     </div>
