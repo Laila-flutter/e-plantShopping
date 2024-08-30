@@ -7,10 +7,12 @@ const CartItem = ({ onContinueShopping }) => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items); // Selector for cart items
 
+  // Calculate total amount for all products in the cart
   const calculateTotalAmount = () => {
     return cartItems.reduce((total, item) => total + item.quantity * parseFloat(item.cost.replace('$', '')), 0);
   };
 
+  // Calculate total cost based on quantity for an item
   const calculateSubtotal = (item) => {
     return item.quantity * parseFloat(item.cost.replace('$', ''));
   };
@@ -29,6 +31,11 @@ const CartItem = ({ onContinueShopping }) => {
 
   const handleRemove = (item) => {
     dispatch(removeItem(item));
+  };
+
+  const handleContinueShopping = (e) => {
+    e.preventDefault();
+    onContinueShopping();
   };
 
   const handleCheckoutShopping = (e) => {
@@ -50,7 +57,7 @@ const CartItem = ({ onContinueShopping }) => {
                 <p>{item.description}</p>
                 <p>Price: {item.cost}</p>
                 <div className="cart-item-quantity">
-                <button className="cart-item-button cart-item-button-dec" onClick={() => handleDecrement(item)}>-</button>
+                  <button className="cart-item-button cart-item-button-dec" onClick={() => handleDecrement(item)}>-</button>
                   <span>{item.quantity}</span>
                   <button className="cart-item-button cart-item-button-inc" onClick={() => handleIncrement(item)}>+</button>
                 </div>
@@ -60,9 +67,8 @@ const CartItem = ({ onContinueShopping }) => {
             </div>
           ))}
           <h3>Total: ${calculateTotalAmount().toFixed(2)}</h3>
-          <button className="get-started-button" onClick={onContinueShopping}>Continue Shopping</button>
-           <br />
-          <button className="get-started-button1"onClick={handleCheckoutShopping}>Checkout</button>
+          <button className="get-started-button" onClick={handleContinueShopping}>Continue Shopping</button>
+          <button className="get-started-button1" onClick={handleCheckoutShopping}>Checkout</button>
         </div>
       )}
     </div>
