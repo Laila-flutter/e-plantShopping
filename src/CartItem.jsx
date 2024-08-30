@@ -35,7 +35,12 @@ const CartItem = ({ onContinueShopping }) => {
 
   const handleContinueShopping = (e) => {
     e.preventDefault();
-    onContinueShopping();
+    console.log('Continue Shopping button clicked'); // Debugging statement
+    if (typeof onContinueShopping === 'function') {
+      onContinueShopping();
+    } else {
+      console.warn('onContinueShopping prop is not a function'); // Debugging statement
+    }
   };
 
   const handleCheckoutShopping = (e) => {
