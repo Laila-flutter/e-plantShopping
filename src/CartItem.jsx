@@ -34,13 +34,7 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const handleContinueShopping = (e) => {
-    e.preventDefault();
-    console.log('Continue Shopping button clicked'); // Debugging statement
-    if (typeof onContinueShopping === 'function') {
-      onContinueShopping();
-    } else {
-      console.warn('onContinueShopping prop is not a function'); // Debugging statement
-    }
+    onContinueShopping();
   };
 
   const handleCheckoutShopping = (e) => {
@@ -72,8 +66,8 @@ const CartItem = ({ onContinueShopping }) => {
             </div>
           ))}
           <h3>Total: ${calculateTotalAmount().toFixed(2)}</h3>
-          <button className="get-started-button" onClick={handleContinueShopping}>Continue Shopping</button>
-         <br />
+ <button className="get-started-button" onClick={handleContinueShopping}>Continue Shopping</button>
+          <br />
           <button className="get-started-button1" onClick={handleCheckoutShopping}>Checkout</button>
         </div>
       )}
