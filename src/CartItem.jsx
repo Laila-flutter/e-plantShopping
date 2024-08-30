@@ -60,7 +60,7 @@ const CartItem = ({ onContinueShopping }) => {
             </div>
           ))}
           <h3>Total: ${calculateTotalAmount().toFixed(2)}</h3>
-          <button className="get-started-button" onClick={(e) => handleContinueShopping(e)}>Continue Shopping</button>
+          <button className="get-started-button" onClick={onContinueShopping}>Continue Shopping</button>
            <br />
           <button className="get-started-button1"onClick={handleCheckoutShopping}>Checkout</button>
         </div>
